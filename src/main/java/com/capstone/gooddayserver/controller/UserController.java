@@ -19,7 +19,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("join")
-    public void join(@ModelAttribute UserJoinRequestDto dto) {
+    public void join(@RequestBody UserJoinRequestDto dto) {
         userService.join(dto);
     }
 

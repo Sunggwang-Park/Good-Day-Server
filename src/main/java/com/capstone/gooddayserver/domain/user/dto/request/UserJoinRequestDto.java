@@ -1,6 +1,7 @@
 package com.capstone.gooddayserver.domain.user.dto.request;
 
 import com.capstone.gooddayserver.domain.user.entity.User;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
