@@ -14,7 +14,15 @@ public enum ErrorCode {
 
     // User 예외
     NOT_FOUND_USER(HttpStatus.NOT_FOUND, "해당 유저를 찾을 수 없습니다."),
-    EXIST_USER(HttpStatus.BAD_REQUEST, "이미 등록된 유저입니다.");
+    EXIST_USER(HttpStatus.BAD_REQUEST, "이미 등록된 유저입니다."),
+
+    //Diary 예외
+    NOT_FOUND_DIARY(HttpStatus.NOT_FOUND, "해당 일기를 찾을 수 없습니다"),
+    DIARY_ACCESS_DENY(HttpStatus.FORBIDDEN, "다른 유저는 접근할 수 없습니다");
+
+
+
+
 
 
 

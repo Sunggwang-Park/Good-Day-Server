@@ -31,6 +31,17 @@ public class UserService {
         return UserInfoResponseDto.toDto(user);
     }
 
+    public User getUser(Long userId) {
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> {
+                    throw new CustomException(ErrorCode.NOT_FOUND_USER, "userId : " + userId);
+                });
+        return user;
+    }
+
+
+
 
 
 
