@@ -25,6 +25,7 @@ public class UserController {
 
     @GetMapping("my")
     public UserInfoResponseDto getUserInfo(@RequestBody Long userId) {
+        System.out.println("UserController.getUserInfo");
         return userService.getUserInfo(userId);
     }
 }
