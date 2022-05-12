@@ -3,6 +3,7 @@ package com.capstone.gooddayserver.domain.diary.dto.request;
 
 import com.capstone.gooddayserver.domain.diary.entity.Diary;
 import com.capstone.gooddayserver.domain.user.entity.User;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 @Data
 @Getter
 @Setter
+@Builder
 public class DiaryCreateRequestDto {
 
     private Long userId;
