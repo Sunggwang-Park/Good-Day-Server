@@ -2,6 +2,7 @@ package com.capstone.gooddayserver.domain.user.entity;
 
 
 import com.capstone.gooddayserver.configure.entity.BaseTimeEntity;
+import com.capstone.gooddayserver.domain.user.dto.request.UserUpdateRequestDto;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -40,5 +41,10 @@ public class User extends BaseTimeEntity {
 
     //최근 업데이트 일시 updDatetime : BaseTimeEntity 의 lastModifiedDate
 
+    public void update(UserUpdateRequestDto dto) {
+        if (dto.getNickname().equals(null) == false) {
+            this.nickname = dto.getNickname();
+        }
+    }
 
 }

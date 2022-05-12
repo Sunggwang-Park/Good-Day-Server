@@ -1,7 +1,9 @@
 package com.capstone.gooddayserver.controller;
 
 
+import com.capstone.gooddayserver.domain.user.dto.request.UserIdRequestDto;
 import com.capstone.gooddayserver.domain.user.dto.request.UserJoinRequestDto;
+import com.capstone.gooddayserver.domain.user.dto.request.UserUpdateRequestDto;
 import com.capstone.gooddayserver.domain.user.dto.response.UserInfoResponseDto;
 import com.capstone.gooddayserver.domain.user.entity.User;
 import com.capstone.gooddayserver.domain.user.repository.UserRepository;
@@ -24,8 +26,14 @@ public class UserController {
     }
 
     @GetMapping("my")
-    public UserInfoResponseDto getUserInfo(@RequestBody Long userId) {
+    public UserInfoResponseDto getUserInfo(@RequestBody UserIdRequestDto dto) {
         System.out.println("UserController.getUserInfo");
-        return userService.getUserInfo(userId);
+        return userService.getUserInfo(dto.getUserId());
+    }
+
+    @PatchMapping("update")
+    public void updateUserInfo(@RequestBody UserUpdateRequestDto dto) {
+        userService.updateInfo(dto);
+        System.out.println("dto = " + dto);
     }
 }
