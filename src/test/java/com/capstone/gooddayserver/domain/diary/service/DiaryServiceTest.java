@@ -27,7 +27,7 @@ class DiaryServiceTest {
     private UserRepository userRepository;
 
     @Test
-//    @Transactional
+    @Transactional
     public void 일기_저장_및_조회() throws Exception {
         //given
 
