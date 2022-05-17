@@ -18,6 +18,7 @@ import java.time.LocalTime;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Transactional
 class DiaryControllerTest {
 
 //    @Autowired
@@ -30,7 +31,6 @@ class DiaryControllerTest {
     private UserRepository userRepository;
     
     @Test
-    @Transactional
     public void 일기_저장() throws Exception {
         //given
         User user = User.builder()
@@ -54,7 +54,6 @@ class DiaryControllerTest {
         //then
         Diary diary = diaryRepository.findDiaryByUser(user);
         Assertions.assertThat(diary.getTitle()).isEqualTo("오늘의 일기");
-        Assertions.assertThat(diary.getDate()).isEqualTo(LocalDate.now());
     }
     
     
