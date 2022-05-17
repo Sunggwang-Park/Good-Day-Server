@@ -1,7 +1,9 @@
-spring:
-  profiles:
-    include: real-db
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-  session:
-    store-type: jdbc
+#spring:
+#  profiles:
+#    include: real-db
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    hibernate:
+#      ddl-auto: create
+#  session:
+#    store-type: jdbc
