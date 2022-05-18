@@ -37,6 +37,11 @@ public class Diary extends BaseTimeEntity {
     private String location; //지역
 
 
+    public void update(DiaryUpdateRequestDto dto) {
+        if (dto.getTitle().equals(null) == false) {
+            this.title = dto.getTitle(); // 제목 update
+        }
+    }
 
 
 }
