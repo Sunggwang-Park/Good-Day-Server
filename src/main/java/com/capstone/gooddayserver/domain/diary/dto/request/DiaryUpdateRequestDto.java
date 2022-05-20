@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Builder
-public class DiaryCreateRequestDto {
+public class DiaryUpdateRequestDto {
 
     private Long userId;
     private String title;
