@@ -25,17 +25,17 @@ public class UserController {
     public UserJoinResponseDto join(@RequestBody UserJoinRequestDto dto) {
 
         User user = userService.join(dto);
-        UserJoinRequestDto userInfoInDB = UserJoinRequestDto.builder()
-                .nickname(user.getNickname())
-                .mbti(user.getMbti())
-                .wakeUpTime(user.getWakeUpTime())
-                .sleepTime(user.getSleepTime())
-                .build();
+//        UserJoinRequestDto userInfoInDB = UserJoinRequestDto.builder()
+//                .nickname(user.getNickname())
+//                .mbti(user.getMbti())
+//                .wakeUpTime(user.getWakeUpTime())
+//                .sleepTime(user.getSleepTime())
+//                .build();
 
         UserJoinResponseDto responseDto = UserJoinResponseDto.builder()
                 .msg("success")
                 .userId(user.getId())
-                .data(userInfoInDB)
+                .data(dto)
                 .build();
 
 
