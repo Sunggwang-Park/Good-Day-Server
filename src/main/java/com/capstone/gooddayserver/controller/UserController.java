@@ -22,20 +22,21 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("join")
+    @ResponseBody
     public UserJoinResponseDto join(@RequestBody UserJoinRequestDto dto) {
 
         User user = userService.join(dto);
-//        UserJoinRequestDto userInfoInDB = UserJoinRequestDto.builder()
-//                .nickname(user.getNickname())
-//                .mbti(user.getMbti())
-//                .wakeUpTime(user.getWakeUpTime())
-//                .sleepTime(user.getSleepTime())
-//                .build();
+        UserJoinRequestDto userInfoInDB = UserJoinRequestDto.builder()
+                .nickname(user.getNickname())
+                .mbti(user.getMbti())
+                .wakeUpTime(user.getWakeUpTime())
+                .sleepTime(user.getSleepTime())
+                .build();
 
         UserJoinResponseDto responseDto = UserJoinResponseDto.builder()
                 .msg("success")
                 .userId(user.getId())
-                .data(dto)
+                .data(userInfoInDB)
                 .build();
 
 
