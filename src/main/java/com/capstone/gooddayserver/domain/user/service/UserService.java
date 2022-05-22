@@ -50,7 +50,10 @@ public class UserService {
                 .orElseThrow(() -> {
                     throw new CustomException(ErrorCode.NOT_FOUND_USER, "userId : " + dto.getUserId());
                 });
-
+        // JPA에 의해 조회된 user 객체는 영속성 컨텍스트 안에 보관되고 관리됨
+        // 영속성 컨텍스트가 관리하는 user 객체는 영속상태임
+        // 영속 상태인 user의 속성(필드)이 하나라도 변경되면 dirty checking(변경 감지)이
+        // 일어나고 JPA에서 자동으로 쿼리를 생성하여 DB에 SQL문을 날려줌
         user.update(dto);
     }
 }
