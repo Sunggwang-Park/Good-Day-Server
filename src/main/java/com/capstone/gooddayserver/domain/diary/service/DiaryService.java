@@ -2,6 +2,7 @@ package com.capstone.gooddayserver.domain.diary.service;
 
 
 import com.capstone.gooddayserver.domain.diary.dto.request.DiaryCreateRequestDto;
+import com.capstone.gooddayserver.domain.diary.dto.request.DiaryUpdateRequestDto;
 import com.capstone.gooddayserver.domain.diary.dto.response.DiaryInfoResponseDto;
 import com.capstone.gooddayserver.domain.diary.entity.Diary;
 import com.capstone.gooddayserver.domain.diary.repository.DiaryRepository;
@@ -56,5 +57,20 @@ public class DiaryService {
         }
 
         return DiaryInfoResponseDto.toDto(diary);
+    }
+
+    @Transactional
+    public void updateDiaryInfo(Long diaryId, DiaryUpdateRequestDto dto, User user) {
+        Diary diary = diaryRepository.findById(diaryId)
+                .orElseThrow(() -> {
+                    throw new CustomException(ErrorCode.NOT_FOUND_DIARY, "diaryId : " + diaryId);
+                });
+
+        //일기를 쓴 유저가 아니면 예외
+        if (!diary.getUser().equals(user)) {
+            throw new CustomException(ErrorCode.DIARY_ACCESS_DENY, "diaryId : " + diaryId + " userId : " + user.getId());
+        }
+
+        diary.update(dto);
     }
 }

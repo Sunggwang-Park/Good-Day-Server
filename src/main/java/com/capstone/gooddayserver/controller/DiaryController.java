@@ -2,6 +2,7 @@ package com.capstone.gooddayserver.controller;
 
 
 import com.capstone.gooddayserver.domain.diary.dto.request.DiaryCreateRequestDto;
+import com.capstone.gooddayserver.domain.diary.dto.request.DiaryUpdateRequestDto;
 import com.capstone.gooddayserver.domain.diary.dto.response.DiaryInfoResponseDto;
 import com.capstone.gooddayserver.domain.diary.service.DiaryService;
 import com.capstone.gooddayserver.domain.user.dto.request.UserIdRequestDto;
@@ -31,12 +32,19 @@ public class DiaryController {
         System.out.println("dto = " + dto);
         User user = userService.getUser(dto.getUserId());
 
-        diaryService.createDiary(dto,user);
+        diaryService.createDiary(dto, user);
     }
 
     @GetMapping("{diaryId}")
     public DiaryInfoResponseDto getDiaryInfo(@PathVariable("diaryId") Long diaryId, @RequestBody UserIdRequestDto dto) {
         User user = userService.getUser(dto.getUserId());
         return diaryService.getDiary(diaryId, user);
+    }
+
+    @PatchMapping("{diaryId}")
+    public void updateDiaryInfo(@PathVariable("diaryId") Long diaryId, @RequestBody DiaryUpdateRequestDto dto) {
+        User user = userService.getUser(dto.getUserId());
+        diaryService.updateDiaryInfo(diaryId, dto, user);
+        System.out.println("dto = " + dto);
     }
 }

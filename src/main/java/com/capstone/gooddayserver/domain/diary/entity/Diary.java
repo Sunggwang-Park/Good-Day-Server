@@ -2,6 +2,7 @@ package com.capstone.gooddayserver.domain.diary.entity;
 
 
 import com.capstone.gooddayserver.configure.entity.BaseTimeEntity;
+import com.capstone.gooddayserver.domain.diary.dto.request.DiaryUpdateRequestDto;
 import com.capstone.gooddayserver.domain.user.entity.User;
 import lombok.*;
 
@@ -37,6 +38,11 @@ public class Diary extends BaseTimeEntity {
     private String location; //지역
 
 
+    public void update(DiaryUpdateRequestDto dto) {
+        if (dto.getTitle().equals(null) == false) {
+            this.title = dto.getTitle(); // 제목 update
+        }
+    }
 
 
 }
