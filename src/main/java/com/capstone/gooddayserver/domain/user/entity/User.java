@@ -42,9 +42,20 @@ public class User extends BaseTimeEntity {
     //최근 업데이트 일시 updDatetime : BaseTimeEntity 의 lastModifiedDate
 
     public void update(UserUpdateRequestDto dto) {
-        if (dto.getNickname().equals(null) == false) {
+        if (dto.getNickname() != null) {
             this.nickname = dto.getNickname();
         }
+        if (dto.getMbti() != null) {
+            this.mbti = dto.getMbti();
+        }
+        if (dto.getWakeUpTime() != null) {
+            this.wakeUpTime = dto.getWakeUpTime();
+        }
+        if (dto.getSleepTime() != null) {
+            this.sleepTime = dto.getSleepTime();
+        }
+        // JPA의 dirty checking(변경 감지)에 의해서 엔티티의 속성값들이 변하면
+        // 변경 쿼리를 자동으로 날려줌
     }
 
 }
