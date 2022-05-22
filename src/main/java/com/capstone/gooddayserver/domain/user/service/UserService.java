@@ -21,8 +21,8 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Transactional
-    public void join(UserJoinRequestDto dto) {
-        userRepository.save(dto.toEntity());
+    public User join(UserJoinRequestDto dto) {
+        return userRepository.save(dto.toEntity());
     }
 
     public UserInfoResponseDto getUserInfo(Long userId) {

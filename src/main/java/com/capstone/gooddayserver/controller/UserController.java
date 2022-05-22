@@ -5,6 +5,7 @@ import com.capstone.gooddayserver.domain.user.dto.request.UserIdRequestDto;
 import com.capstone.gooddayserver.domain.user.dto.request.UserJoinRequestDto;
 import com.capstone.gooddayserver.domain.user.dto.request.UserUpdateRequestDto;
 import com.capstone.gooddayserver.domain.user.dto.response.UserInfoResponseDto;
+import com.capstone.gooddayserver.domain.user.dto.response.UserJoinResponseDto;
 import com.capstone.gooddayserver.domain.user.entity.User;
 import com.capstone.gooddayserver.domain.user.repository.UserRepository;
 import com.capstone.gooddayserver.domain.user.service.UserService;
@@ -21,8 +22,24 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("join")
-    public void join(@RequestBody UserJoinRequestDto dto) {
-        userService.join(dto);
+    public UserJoinResponseDto join(@RequestBody UserJoinRequestDto dto) {
+
+        User user = userService.join(dto);
+        UserJoinRequestDto userInfoInDB = UserJoinRequestDto.builder()
+                .nickname(user.getNickname())
+                .mbti(user.getMbti())
+                .wakeUpTime(user.getWakeUpTime())
+                .sleepTime(user.getSleepTime())
+                .build();
+
+        UserJoinResponseDto responseDto = UserJoinResponseDto.builder()
+                .msg("success")
+                .userId(user.getId())
+                .data(userInfoInDB)
+                .build();
+
+
+        return responseDto;
     }
 
     @GetMapping("my")
