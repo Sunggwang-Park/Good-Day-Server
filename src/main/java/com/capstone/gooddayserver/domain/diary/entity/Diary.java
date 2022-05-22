@@ -2,6 +2,7 @@ package com.capstone.gooddayserver.domain.diary.entity;
 
 
 import com.capstone.gooddayserver.configure.entity.BaseTimeEntity;
+import com.capstone.gooddayserver.domain.diary.dto.request.DiaryUpdateRequestDto;
 import com.capstone.gooddayserver.domain.user.entity.User;
 import lombok.*;
 

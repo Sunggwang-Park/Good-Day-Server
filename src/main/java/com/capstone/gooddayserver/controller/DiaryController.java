@@ -2,6 +2,7 @@ package com.capstone.gooddayserver.controller;
 
 
 import com.capstone.gooddayserver.domain.diary.dto.request.DiaryCreateRequestDto;
+import com.capstone.gooddayserver.domain.diary.dto.request.DiaryUpdateRequestDto;
 import com.capstone.gooddayserver.domain.diary.dto.response.DiaryInfoResponseDto;
 import com.capstone.gooddayserver.domain.diary.service.DiaryService;
 import com.capstone.gooddayserver.domain.user.dto.request.UserIdRequestDto;
