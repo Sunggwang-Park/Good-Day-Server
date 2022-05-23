@@ -34,19 +34,20 @@ class DiaryControllerTest {
     public void 일기_저장() throws Exception {
         //given
         User user = User.builder()
-                .nickname("성광")
-                .mbti("INTJ")
-                .sleepTime(LocalTime.parse("22:00"))
-                .wakeUpTime(LocalTime.parse("09:00"))
-                .build();
+                    .nickname("성광")
+                    .mbti("INTJ")
+                    .sleepTime(LocalTime.parse("22:00"))
+                    .wakeUpTime(LocalTime.parse("09:00"))
+                    .build();
         userRepository.save(user);
 
         DiaryCreateRequestDto dto = DiaryCreateRequestDto.builder()
-                .userId(user.getId())
-                .title("오늘의 일기")
-                .content("기분이 좋다")
-                .date(LocalDate.parse("2022-05-12"))
-                .build();
+                                    .userId(user.getId())
+                                    .title("오늘의 일기")
+                                    .content("기분이 좋다")
+                                    .date(LocalDate.parse("2022-05-12"))
+                                    .location("전남대학교")
+                                    .build();
 
         //when
         diaryController.createDiary(dto);
