@@ -39,8 +39,20 @@ public class Diary extends BaseTimeEntity {
 
 
     public void update(DiaryUpdateRequestDto dto) {
-        if (dto.getTitle().equals(null) == false) {
-            this.title = dto.getTitle(); // 제목 update
+        if (dto.getTitle() != null) {
+            this.title = dto.getTitle();
+        }
+        if (dto.getContent() != null) {
+            this.content = dto.getContent();
+        }
+        if (dto.getImgUrl() != null) {
+            this.imgUrl = dto.getImgUrl();
+        }
+        if (dto.getDate() != null) {
+            this.date = dto.getDate();
+        }
+        if (dto.getLocation() != null) {
+            this.location = dto.getLocation();
         }
     }
 
