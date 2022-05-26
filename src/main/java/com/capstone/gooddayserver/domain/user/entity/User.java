@@ -5,10 +5,7 @@ import com.capstone.gooddayserver.configure.entity.BaseTimeEntity;
 import com.capstone.gooddayserver.domain.user.dto.request.UserUpdateRequestDto;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -17,12 +14,12 @@ import java.time.LocalTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name="\"User\"")
 public class User extends BaseTimeEntity {
 
     @Id @GeneratedValue
     @Column(name = "userId")
     private Long id;
-
 
     private String nickname;
 

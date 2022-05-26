@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+//@Table(name = "diary")
 public class Diary extends BaseTimeEntity {
 
     @Id @GeneratedValue
