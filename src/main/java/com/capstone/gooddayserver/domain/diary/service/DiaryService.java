@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Optional;
 
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -28,7 +29,7 @@ public class DiaryService {
 
     @PostMapping
     @Transactional
-    public void createDiary(DiaryCreateRequestDto dto, User user) {
+    public Diary createDiary(DiaryCreateRequestDto dto, User user) {
 
         Diary diary = Diary.builder()
                 .user(user)
@@ -41,8 +42,10 @@ public class DiaryService {
                 .sumScore(dto.getSumScore())
                 .build();
 
-        diaryRepository.save(diary);
+        return diaryRepository.save(diary);
+
     }
+
 
 
     public DiaryInfoResponseDto getDiary(Long diaryId, User user) {
@@ -57,7 +60,11 @@ public class DiaryService {
         }
 
         return DiaryInfoResponseDto.toDto(diary);
+
     }
+
+
+
 
     @Transactional
     public void updateDiaryInfo(Long diaryId, DiaryUpdateRequestDto dto, User user) {
@@ -73,4 +80,5 @@ public class DiaryService {
 
         diary.update(dto);
     }
+
 }

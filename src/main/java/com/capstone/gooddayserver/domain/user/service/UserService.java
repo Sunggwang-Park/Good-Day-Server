@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -20,19 +21,26 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+
     @Transactional
     public User join(UserJoinRequestDto dto) {
         return userRepository.save(dto.toEntity());
     }
 
+
+
     public UserInfoResponseDto getUserInfo(Long userId) {
+
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> {
                     throw new CustomException(ErrorCode.NOT_FOUND_USER, "존재하지 않는 userId :" + userId);
                 });
 
         return UserInfoResponseDto.toDto(user);
+
     }
+
+
 
     public User getUser(Long userId) {
 
@@ -41,7 +49,10 @@ public class UserService {
                     throw new CustomException(ErrorCode.NOT_FOUND_USER, "userId : " + userId);
                 });
         return user;
+
     }
+
+
 
     @Transactional
     public void updateInfo(UserUpdateRequestDto dto) {
@@ -55,5 +66,7 @@ public class UserService {
         // 영속 상태인 user의 속성(필드)이 하나라도 변경되면 dirty checking(변경 감지)이
         // 일어나고 JPA에서 자동으로 쿼리를 생성하여 DB에 SQL문을 날려줌
         user.update(dto);
+
     }
+
 }
