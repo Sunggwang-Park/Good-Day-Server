@@ -32,28 +32,30 @@ class DiaryServiceTest {
     public void 일기_수정() throws Exception {
         //given
         User user = User.builder()
-                    .nickname("성광")
-                    .mbti("INTJ")
-                    .sleepTime(LocalTime.parse("22:00"))
-                    .wakeUpTime(LocalTime.parse("09:00"))
-                    .build();
+                .nickname("성광")
+                .mbti("INTJ")
+                .sleepTime(LocalTime.parse("22:00"))
+                .wakeUpTime(LocalTime.parse("09:00"))
+                .build();
         userRepository.save(user);
 
         Diary diary = Diary.builder()
-                    .title("오늘의 일기")
-                    .content("기분이 좋다")
-                    .date(LocalDate.parse("2022-05-12"))
-                    .location("전남대학교")
-                    .build();
+                .user(user)
+                .title("오늘의 일기")
+                .content("기분이 좋다")
+                .date(LocalDate.parse("2022-05-12"))
+                .location("전남대학교")
+                .build();
         diaryRepository.save(diary);
 
         DiaryUpdateRequestDto dto = DiaryUpdateRequestDto.builder()
-                                    .userId(user.getId())
-                                    .title("바뀐 제목")
-                                    .content("바뀐 내용")
-                                    .date(LocalDate.parse("2022-05-24"))
-                                    .location("바뀐 장소")
-                                    .build();
+                .userId(user.getId())
+                .title("바뀐 제목")
+                .content("바뀐 내용")
+                .date(LocalDate.parse("2022-05-24"))
+                .location("바뀐 장소")
+                .build();
+
 
         //when
         diaryService.updateDiaryInfo(diary.getId(), dto, user);
